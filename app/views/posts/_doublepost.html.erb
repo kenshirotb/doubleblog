@@ -1,0 +1,30 @@
+    <div id="header">
+      <h1><%= post.globaltitle %></h1>
+    </div>
+    <div class="colmask doublepage">
+      <div class="colleft">
+        <div class="col1">
+          <h2><%= post.title1 %></h2>
+          <%= post.content1 %>
+        </div>
+        <div class="col2">
+          <h2><%= post.title2 %></h2>
+          <%= post.content2 %>
+        </div>
+  	</div>
+  	</div>
+    <div id="footer">
+      <p>
+        <b>Tags:</b>
+        <%= join_tags(post) %>
+      </p>
+      <% if azione=="index"%>
+        <%= link_to 'Show', post %>&nbsp;
+      <%else%>
+        <%= link_to 'Back to Posts', posts_path %>
+      <%end%>
+      <%= link_to 'Edit', edit_post_path(post) %>&nbsp;
+      <%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %>&nbsp;
+    </div>
+    
+

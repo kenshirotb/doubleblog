@@ -1,0 +1,52 @@
+<% @post.tags.build %>
+<%= form_for(@post) do |post_form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="header">
+    <div class="field">
+      <%= post_form.label :globaltitle %><br />
+      <%= post_form.text_field :globaltitle %>
+    </div>
+  </div>
+  <div class="colmask doublepage">
+    <div class="colleft">
+      <div class="col1">
+        <div class="field">
+          <%= post_form.label :title1 %><br />
+          <%= post_form.text_field :title1 %>
+        </div>
+        <div class="field">
+          <%= post_form.label :content1 %><br />
+          <%= post_form.text_area :content1 %>
+        </div>
+      </div>
+      <div class="col2">
+        <div class="field">
+          <%= post_form.label :title2 %><br />
+          <%= post_form.text_field :title2 %>
+        </div>
+        <div class="field">
+          <%= post_form.label :content2 %><br />
+          <%= post_form.text_area :content2 %>
+        </div>
+      </div>
+	</div>
+	</div>
+      <div id="footer">
+        <h2>Tags</h2>
+        <%= render  :partial => 'tags/form',
+                    :locals => {:form => post_form} %>
+        <div class="actions">
+          <%= post_form.submit %>
+        </div>
+      </div>
+<% end %>
